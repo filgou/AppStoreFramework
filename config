@@ -1,0 +1,9 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	worktree = D:/Users/gou/Documents/Visual Studio 2013/Projects/AppStoreFramework
+	symlinks = false
+	ignorecase = true
+	hideDotFiles = dotGitOnly
