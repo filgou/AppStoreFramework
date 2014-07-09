@@ -5,7 +5,7 @@ using AppStoreFramework.Infrastructure.Implementations.Xml;
 
 namespace AppStoreFramework.DAL.Implementations.StoreApp
 {
-    public  class StoreAppManifest: IStoreAppManifest
+    public class StoreAppManifest : IStoreAppManifest
     {
         private string typeId;
         private XmlUri previewImageUri;
@@ -88,6 +88,21 @@ namespace AppStoreFramework.DAL.Implementations.StoreApp
         {
             get { return this.extraData; }
             set { this.extraData = value; }
+        }
+
+        public bool IsValid()
+        {
+            try
+            {
+                //try to convert to absolute to force check   
+                Uri validUri;
+                return Uri.TryCreate(packageUri.ToString(), UriKind.Absolute, out validUri);
+            }
+            catch (NullReferenceException)
+            {
+                return false;
+            }
+
         }
     }
 }

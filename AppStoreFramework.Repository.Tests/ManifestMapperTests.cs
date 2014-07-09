@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Xml.Linq;
 using AppStoreFramework.DAL.Implementations.StoreApp;
 using AppStoreFramework.Infrastructure.Implementations.Extensions;
 using AppStoreFramework.Infrastructure.Interfaces.FileSystem;
@@ -17,7 +18,7 @@ namespace AppStoreFramework.Repository.Tests
         public void TestSetup()
         {
             this.manifest.TypeId = "game";
-            this.manifest.Version = "1.0.0";
+            this.manifest.Version = "1.0.0.0";
         }
 
         [TestMethod]
@@ -27,6 +28,17 @@ namespace AppStoreFramework.Repository.Tests
             this.fileSystem.Setup(o => o.ReadAllText(It.IsAny<string>())).Returns(this.manifest.Serialize());
 
             var mappedManifest = mapper.LoadAppManifest(new FileInfo( "c:\\test.manifest"));
+            Assert.AreEqual(mappedManifest.Version, this.manifest.Version);
+        }
+
+        [TestMethod]
+        public void ManifestTestPartialMapping()
+        {
+            var mapper = new ManifestMapper(this.fileSystem.Object);
+            var partialxml = XElement.Load("ManifestExample.xml").ToString(SaveOptions.None);
+            this.fileSystem.Setup(o => o.ReadAllText(It.IsAny<string>())).Returns(partialxml);
+
+            var mappedManifest = mapper.LoadAppManifest(new FileInfo("c:\\test.manifest"));
             Assert.AreEqual(mappedManifest.Version, this.manifest.Version);
         }
     }

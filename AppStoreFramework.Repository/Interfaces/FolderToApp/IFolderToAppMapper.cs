@@ -1,11 +1,13 @@
 ﻿using System.IO;
+using System.Security.Cryptography.X509Certificates;
 using AppStoreFramework.DAL.Interfaces.StoreApp;
 
 namespace AppStoreFramework.Repository.Interfaces.FolderToApp
 {
     public interface IFolderToAppMapper
     {
-        IStoreApp LoadApp(DirectoryInfo folder);
-        bool CheckIsValidFolder(DirectoryInfo folder);
+        DirectoryInfo WorkingDirectory { get; set; }
+        IStoreApp LoadApp();
+        bool CheckIsValidFolder();
     }
 }

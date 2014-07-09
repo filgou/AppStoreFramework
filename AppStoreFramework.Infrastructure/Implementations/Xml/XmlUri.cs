@@ -36,5 +36,10 @@ namespace AppStoreFramework.Infrastructure.Implementations.Xml
         {
             writer.WriteValue(this.value.ToString());
         }
+
+        public override string ToString()
+        {
+           return this.value.ToString();
+        }
     }
 }

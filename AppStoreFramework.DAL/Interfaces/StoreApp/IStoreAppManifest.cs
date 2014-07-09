@@ -21,5 +21,7 @@ namespace AppStoreFramework.DAL.Interfaces.StoreApp
         SerializableDictionary<string, string> LocalisedResources { get; set; }
 
         string ExtraData { get; set; }
+
+        bool IsValid();
     }
 }

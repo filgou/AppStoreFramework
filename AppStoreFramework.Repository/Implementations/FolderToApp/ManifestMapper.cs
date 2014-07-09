@@ -20,7 +20,7 @@ namespace AppStoreFramework.Repository.Implementations.FolderToApp
         public IStoreAppManifest LoadAppManifest(FileInfo manifestFile)
         {
             var filecontents = this.fileSystem.ReadAllText(manifestFile.FullName);
-            var xml = XElement.Load(filecontents);
+            var xml = XElement.Parse(filecontents);
             var xmlToString = xml.ToString(SaveOptions.None);
             return xmlToString.DeSerialize<StoreAppManifest>();
         }

@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Implementations\FileSystemToRepo\FileSystemToRepoMapper.cs" />
+    <Compile Include="Implementations\FolderToApp\FolderToAppMapper.cs" />
     <Compile Include="Implementations\FolderToApp\ManifestMapper.cs" />
     <Compile Include="Interfaces\FileSystemToRepo\IFileSystemToRepoMapper.cs" />
     <Compile Include="Interfaces\FolderToApp\IFolderToAppMapper.cs" />

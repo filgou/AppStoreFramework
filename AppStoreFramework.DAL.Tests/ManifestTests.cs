@@ -17,6 +17,7 @@ namespace AppStoreFramework.DAL.Tests
         private string publisher = "gou";
         private List<string> prerequisites = new List<string> {"LC 6.4.1", "LC6.4.0"}; 
         private XmlUri testUri = new Uri("http://www.test.com", UriKind.Absolute);
+        private XmlUri imageUri = new Uri("http://www.image.com", UriKind.Absolute);
         private List<string> languages = new List<string> {"EN", "DE"};
         private SerializableDictionary<string, string> localisationDictionary;
 
@@ -61,10 +62,21 @@ namespace AppStoreFramework.DAL.Tests
             Assert.AreEqual(manifest.PublishedBy, this.publisher); 
             Assert.AreEqual(manifest.Version, this.version);
             Assert.AreEqual(manifest.TypeId, this.typeId);
-            Assert.AreEqual(manifest.PreviewImageUri.ToString(), this.testUri.ToString());
+            Assert.AreEqual(manifest.PreviewImageUri.ToString(), this.imageUri.ToString());
             Assert.AreEqual(manifest.PackageUri.ToString(), this.testUri.ToString());
             Assert.AreEqual(manifest.LocalisedResources.Count, this.localisationDictionary.Count);
             Assert.AreEqual(manifest.Languages.Count, this.languages.Count);
+        }
+
+        [TestMethod]
+        public void ManifestValidityTest()
+        {
+            var s = new StoreAppManifest();
+            Assert.AreEqual(s.IsValid(),false);
+            s.PackageUri = new XmlUri(new Uri("test",UriKind.Relative));
+            Assert.AreEqual(s.IsValid(), false);
+            s.PackageUri = new XmlUri(new Uri("http://www.test.com/", UriKind.RelativeOrAbsolute));
+            Assert.AreEqual(s.IsValid(), true);
         }
     }
 }
