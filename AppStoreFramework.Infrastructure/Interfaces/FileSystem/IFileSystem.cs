@@ -24,6 +24,8 @@ namespace AppStoreFramework.Infrastructure.Interfaces.FileSystem
 
         string GetDirectoryName(string path);
 
+        string[] GetDirectories(string path);
+
         string PathCombine(params string[] args);
 
         void MoveFile(string filePath, string newFilePath);

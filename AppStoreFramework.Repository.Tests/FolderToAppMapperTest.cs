@@ -39,7 +39,7 @@ namespace AppStoreFramework.Repository.Tests
         [TestMethod]
         public void TestValidContents()
         {
-            var foldermapper = new FolderToAppMapper(workingdirectory, manifestMapper.Object, fileSystem.Object);
+            var foldermapper = new FolderToAppMapper(workingdirectory.FullName, manifestMapper.Object, fileSystem.Object);
 
             fileSystem.Setup(o => o.GetFiles(workingdirectory.FullName)).Returns(validResults);
             manifestMapper.Setup(o => o.LoadAppManifest(It.IsAny<FileInfo>())).Returns(manifest);
@@ -47,22 +47,22 @@ namespace AppStoreFramework.Repository.Tests
 
         }
 
-        [ExpectedException(typeof( AmbiguousMatchException ), "None or multiple manifests found for single app" )]
+        [ExpectedException(typeof( ArgumentException ), "None or multiple manifests found for single app" )]
         [TestMethod]
         public void TestMissingManifest()
         {
-            var foldermapper = new FolderToAppMapper(workingdirectory, manifestMapper.Object, fileSystem.Object);
+            var foldermapper = new FolderToAppMapper(workingdirectory.FullName, manifestMapper.Object, fileSystem.Object);
 
             fileSystem.Setup(o => o.GetFiles(workingdirectory.FullName)).Returns(missingManifestResults);
             manifestMapper.Setup(o => o.LoadAppManifest(It.IsAny<FileInfo>())).Returns(manifest);
             foldermapper.CheckIsValidFolder();
         }
 
-        [ExpectedException(typeof(AmbiguousMatchException), "Manifest was not valid")]
+        [ExpectedException(typeof(ArgumentException), "Manifest was not valid")]
         [TestMethod]
         public void TestMultipleManifests()
         {
-            var foldermapper = new FolderToAppMapper(workingdirectory, manifestMapper.Object, fileSystem.Object);
+            var foldermapper = new FolderToAppMapper(workingdirectory.FullName, manifestMapper.Object, fileSystem.Object);
 
             fileSystem.Setup(o => o.GetFiles(workingdirectory.FullName)).Returns(validResults);
             this.manifest.PackageUri = new XmlUri();
@@ -73,7 +73,7 @@ namespace AppStoreFramework.Repository.Tests
         [TestMethod]
         public void TestCateogryName()
         {
-            var foldermapper = new FolderToAppMapper(workingdirectory, manifestMapper.Object, fileSystem.Object);
+            var foldermapper = new FolderToAppMapper(workingdirectory.FullName, manifestMapper.Object, fileSystem.Object);
           
 
             var category = foldermapper.GetCategoryFromFileSystem();
@@ -89,7 +89,7 @@ namespace AppStoreFramework.Repository.Tests
         [TestMethod]
         public void TestLongCateogryName()
         {
-            var foldermapper = new FolderToAppMapper(longworkingdirectory, manifestMapper.Object, fileSystem.Object);
+            var foldermapper = new FolderToAppMapper(longworkingdirectory.FullName, manifestMapper.Object, fileSystem.Object);
            
             var category = foldermapper.GetCategoryFromFileSystem();
             Assert.AreEqual(category, "category");
@@ -104,7 +104,7 @@ namespace AppStoreFramework.Repository.Tests
         [TestMethod]
         public void TestShortCateogryName()
         {
-            var foldermapper = new FolderToAppMapper(shortworkingdirectory, manifestMapper.Object, fileSystem.Object);
+            var foldermapper = new FolderToAppMapper(shortworkingdirectory.FullName, manifestMapper.Object, fileSystem.Object);
            
 
             var category = foldermapper.GetCategoryFromFileSystem();
@@ -120,7 +120,7 @@ namespace AppStoreFramework.Repository.Tests
         [TestMethod]
         public void TestShortCateogryName2()
         {
-            var foldermapper = new FolderToAppMapper(shortworkingdirectory2, manifestMapper.Object, fileSystem.Object);
+            var foldermapper = new FolderToAppMapper(shortworkingdirectory2.FullName, manifestMapper.Object, fileSystem.Object);
           
 
             var category = foldermapper.GetCategoryFromFileSystem();
@@ -136,7 +136,7 @@ namespace AppStoreFramework.Repository.Tests
         [TestMethod]
         public void TestCategoryEmptyName()
         {
-            var foldermapper = new FolderToAppMapper(emptyworkingdirectory, manifestMapper.Object, fileSystem.Object);
+            var foldermapper = new FolderToAppMapper(emptyworkingdirectory.FullName, manifestMapper.Object, fileSystem.Object);
             
 
             var category = foldermapper.GetCategoryFromFileSystem();

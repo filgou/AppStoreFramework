@@ -6,7 +6,7 @@ namespace AppStoreFramework.Repository.Interfaces.FolderToApp
 {
     public interface IFolderToAppMapper
     {
-        DirectoryInfo WorkingDirectory { get; set; }
+        string WorkingDirectory { get; set; }
         IStoreApp LoadApp();
         bool CheckIsValidFolder();
     }

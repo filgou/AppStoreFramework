@@ -58,6 +58,7 @@
     <Compile Include="ManifestMapperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FolderToAppMapperTest.cs" />
+    <Compile Include="FilesystemToRepoTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AppStoreFramework.DAL\AppStoreFramework.DAL.csproj">
@@ -67,6 +68,10 @@
     <ProjectReference Include="..\AppStoreFramework.Infrastructure\AppStoreFramework.Infrastructure.csproj">
       <Project>{CA1DC22F-002C-4517-A7FA-9A463A15FA75}</Project>
       <Name>AppStoreFramework.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AppStoreFramework.Logging\AppStoreFramework.Logging.csproj">
+      <Project>{2BFC7E9E-8255-44AA-AFBE-B5CAF0243949}</Project>
+      <Name>AppStoreFramework.Logging</Name>
     </ProjectReference>
     <ProjectReference Include="..\AppStoreFramework.Repository\AppStoreFramework.Repository.csproj">
       <Project>{9BC798F6-E17D-4684-85D9-21A40A384FD4}</Project>

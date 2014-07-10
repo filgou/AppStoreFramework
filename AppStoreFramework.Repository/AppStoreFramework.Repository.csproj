@@ -41,9 +41,11 @@
   <ItemGroup>
     <Compile Include="Implementations\FileSystemToRepo\FileSystemToRepoMapper.cs" />
     <Compile Include="Implementations\FolderToApp\FolderToAppMapper.cs" />
+    <Compile Include="Implementations\FolderToApp\FolderToAppMapperFactory.cs" />
     <Compile Include="Implementations\FolderToApp\ManifestMapper.cs" />
     <Compile Include="Interfaces\FileSystemToRepo\IFileSystemToRepoMapper.cs" />
     <Compile Include="Interfaces\FolderToApp\IFolderToAppMapper.cs" />
+    <Compile Include="Interfaces\FolderToApp\IFolderToAppMapperFactory.cs" />
     <Compile Include="Interfaces\FolderToApp\IManifestMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -55,6 +57,10 @@
     <ProjectReference Include="..\AppStoreFramework.Infrastructure\AppStoreFramework.Infrastructure.csproj">
       <Project>{CA1DC22F-002C-4517-A7FA-9A463A15FA75}</Project>
       <Name>AppStoreFramework.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AppStoreFramework.Logging\AppStoreFramework.Logging.csproj">
+      <Project>{2BFC7E9E-8255-44AA-AFBE-B5CAF0243949}</Project>
+      <Name>AppStoreFramework.Logging</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

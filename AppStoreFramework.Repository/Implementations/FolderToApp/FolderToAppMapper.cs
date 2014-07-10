@@ -16,20 +16,20 @@ namespace AppStoreFramework.Repository.Implementations.FolderToApp
     public class FolderToAppMapper : IFolderToAppMapper
     {
         internal string ManifestFileExtension =".manifest";
-        private DirectoryInfo workingDirectory;
+        private string workingDirectory;
         private readonly IManifestMapper manifestMapper;
         private readonly IFileSystem fileSystem;
         private IStoreAppManifest loadedManifest;
         private IStoreApp loadedStoreApp;
 
-        public FolderToAppMapper(DirectoryInfo workingDirectory, IManifestMapper manifestMapper, IFileSystem fileSystem)
+        public FolderToAppMapper(string workingDirectory, IManifestMapper manifestMapper, IFileSystem fileSystem)
         {
             this.workingDirectory = workingDirectory;
             this.manifestMapper = manifestMapper;
             this.fileSystem = fileSystem;
         }
 
-        public DirectoryInfo WorkingDirectory
+        public string WorkingDirectory
         {
             get { return this.workingDirectory; }
             set { this.workingDirectory = value; }
@@ -63,7 +63,7 @@ namespace AppStoreFramework.Repository.Implementations.FolderToApp
 
         internal string GetCategoryFromFileSystem()
         {
-            var path = @workingDirectory.FullName;
+            var path = workingDirectory;
             path = TrimUnc(path);
             var directories = path.Split("\\".ToCharArray());
             var depth = directories.Length;
@@ -86,7 +86,7 @@ namespace AppStoreFramework.Repository.Implementations.FolderToApp
 
         internal string GetSubategoryFromFileSystem()
         {
-            var path = @workingDirectory.FullName;
+            var path = workingDirectory;
             path = TrimUnc(path);
             var directories = path.Split("\\".ToCharArray());
             var depth = directories.Length;
@@ -109,7 +109,7 @@ namespace AppStoreFramework.Repository.Implementations.FolderToApp
 
         internal string GetNameFromFileSystem()
         {
-            var path = @workingDirectory.FullName;
+            var path = workingDirectory;
             path = TrimUnc(path);
             var directories = path.Split("\\".ToCharArray());
             var depth = directories.Length;
@@ -138,17 +138,17 @@ namespace AppStoreFramework.Repository.Implementations.FolderToApp
 
         internal bool CheckForValidContents()
         {
-            var contents = fileSystem.GetFiles(workingDirectory.FullName);
+            var contents = fileSystem.GetFiles(workingDirectory);
 
             if (!CheckForUniqueManifest(contents.ToList()))
             {
-                throw new AmbiguousMatchException("None or multiple manifests found for single app");
+                throw new ArgumentException("None or multiple manifests found for single app");
             }
             var manifest = contents.FirstOrDefault(o => o.EndsWith(ManifestFileExtension));
            
             if (!LoadAndCheckForValidManifest(manifest))
             {
-                throw new AmbiguousMatchException("Manifest was not valid");
+                throw new ArgumentException("Manifest was not valid");
             }
             return true;
         }

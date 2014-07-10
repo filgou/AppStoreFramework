@@ -60,6 +60,11 @@ namespace AppStoreFramework.Infrastructure.Implementations.FileSystem
             return Path.GetDirectoryName(path);
         }
 
+        public string[] GetDirectories(string path)
+        {
+            return Directory.GetDirectories(path);
+        }
+
         public string PathCombine(params string[] args)
         {
             return Path.Combine(args);

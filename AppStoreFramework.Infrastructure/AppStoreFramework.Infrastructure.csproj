@@ -44,7 +44,7 @@
     <Compile Include="Implementations\Extensions\XmlExtensions.cs" />
     <Compile Include="Implementations\FileSystem\DefaultFileStream.cs" />
     <Compile Include="Implementations\FileSystem\DefaultFileSystem.cs" />
-    <Compile Include="Implementations\Tree\ITreeNodeAware.cs" />
+    <Compile Include="Interfaces\Tree\ITreeNodeAware.cs" />
     <Compile Include="Implementations\Tree\Tree.cs" />
     <Compile Include="Implementations\Tree\TreeEnums.cs" />
     <Compile Include="Implementations\Tree\TreeNode.cs" />
