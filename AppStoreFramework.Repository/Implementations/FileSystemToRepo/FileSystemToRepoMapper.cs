@@ -18,6 +18,11 @@ namespace AppStoreFramework.Repository.Implementations.FileSystemToRepo
         internal Stack<string> StoreAppDirectories;
         internal List<IStoreApp> StoreAppRepo;
 
+        public List<IStoreApp> StoreApps
+        {
+            get { return StoreAppRepo; }
+        }
+
         public FileSystemToRepoMapper(IFileSystem fileSystem, IFolderToAppMapperFactory folderToAppMapperFactory, ILogger logger)
         {
             this.fileSystem = fileSystem;

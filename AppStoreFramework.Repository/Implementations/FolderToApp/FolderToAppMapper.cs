@@ -40,8 +40,9 @@ namespace AppStoreFramework.Repository.Implementations.FolderToApp
             if(CheckIsValidFolder())
             {
                 loadedStoreApp = new StoreApp(loadedManifest);
-               
+                InitializeStoreApp();
             }
+           
             return loadedStoreApp;
         }
 

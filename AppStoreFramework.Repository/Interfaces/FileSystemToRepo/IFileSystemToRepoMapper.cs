@@ -8,5 +8,6 @@ namespace AppStoreFramework.Repository.Interfaces.FileSystemToRepo
     public interface IFileSystemToRepoMapper
     {
         List<IStoreApp> LoadApps(Uri filesystemRootUncpPath);
+        List<IStoreApp> StoreApps { get; }
     }
 }
