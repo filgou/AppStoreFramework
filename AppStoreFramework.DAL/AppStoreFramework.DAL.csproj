@@ -41,16 +41,18 @@
   <ItemGroup>
     <Compile Include="Implementations\Logging\LogEntry.cs" />
     <Compile Include="Implementations\StoreApp\StoreAppManifest.cs" />
+    <Compile Include="Interfaces\Commands\Repository\IAddAppCommand.cs" />
+    <Compile Include="Interfaces\Commands\Repository\IDeleteAppCommand.cs" />
+    <Compile Include="Interfaces\Commands\Repository\IUpdateAppCommand.cs" />
+    <Compile Include="Interfaces\Documents\IDocument.cs" />
     <Compile Include="Interfaces\Logging\ILogEntry.cs" />
+    <Compile Include="Interfaces\Queries\IGetAppsQuery.cs" />
     <Compile Include="Interfaces\StoreApp\IStoreApp.cs" />
     <Compile Include="Implementations\StoreApp\StoreApp.cs" />
     <Compile Include="Interfaces\StoreApp\IStoreAppManifest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Implementations\Documents\" />
-    <Folder Include="Interfaces\Documents\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\AppStoreFramework.Infrastructure\AppStoreFramework.Infrastructure.csproj">
       <Project>{CA1DC22F-002C-4517-A7FA-9A463A15FA75}</Project>

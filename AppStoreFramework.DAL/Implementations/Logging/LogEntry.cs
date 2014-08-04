@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AppStoreFramework.DAL.Interfaces;
+using AppStoreFramework.DAL.Interfaces.Logging;
 
 namespace AppStoreFramework.DAL.Implementations.Logging
 {

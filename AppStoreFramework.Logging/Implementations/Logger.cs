@@ -16,8 +16,6 @@ namespace AppStoreFramework.Logging.Implementations
             Trace.WriteLine(s);
         }
 
-       
-
         public void Debug(string message, string sender = "", string tags = "")
         {
             Log("Debug", message, sender, "", tags);

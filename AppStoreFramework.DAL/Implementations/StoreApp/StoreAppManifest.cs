@@ -96,7 +96,7 @@ namespace AppStoreFramework.DAL.Implementations.StoreApp
             {
                 //try to convert to absolute to force check   
                 Uri validUri;
-                return Uri.TryCreate(packageUri.ToString(), UriKind.Absolute, out validUri);
+                return Uri.TryCreate(this.packageUri.ToString(), UriKind.Absolute, out validUri);
             }
             catch (NullReferenceException)
             {

@@ -43,10 +43,12 @@
     <Compile Include="Implementations\FolderToApp\FolderToAppMapper.cs" />
     <Compile Include="Implementations\FolderToApp\FolderToAppMapperFactory.cs" />
     <Compile Include="Implementations\FolderToApp\ManifestMapper.cs" />
+    <Compile Include="Implementations\RepoToDb\RepoToDbMapper.cs" />
     <Compile Include="Interfaces\FileSystemToRepo\IFileSystemToRepoMapper.cs" />
     <Compile Include="Interfaces\FolderToApp\IFolderToAppMapper.cs" />
     <Compile Include="Interfaces\FolderToApp\IFolderToAppMapperFactory.cs" />
     <Compile Include="Interfaces\FolderToApp\IManifestMapper.cs" />
+    <Compile Include="Interfaces\RepoToDb\IRepoToDbMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
